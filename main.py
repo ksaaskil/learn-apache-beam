@@ -16,16 +16,14 @@ from apache_beam.options.pipeline_options import (
 
 from apache_beam.io import ReadFromText, WriteToText
 
-# from dotenv import load_dotenv
-
-# load_dotenv()
-
-# GOOGLE_CLOUD_PROJECT = os.getenv("GCP_PROJECT", None)
-# GCP_BUCKET = os.getenv("GCP_BUCKET", None)
-# GCP_REGION = os.getenv("GCP_REGION", None)
-
 
 def pipeline_options() -> PipelineOptions:
+    # from dotenv import load_dotenv
+    # load_dotenv()
+
+    # GOOGLE_CLOUD_PROJECT = os.getenv("GCP_PROJECT", None)
+    # GCP_BUCKET = os.getenv("GCP_BUCKET", None)
+    # GCP_REGION = os.getenv("GCP_REGION", None)
     options = PipelineOptions()
     # gcp_options = options.view_as(GoogleCloudOptions)
     # gcp_options.project = GOOGLE_CLOUD_PROJECT
@@ -59,20 +57,20 @@ def main(argv=None):
     known_args, pipeline_args = parser.parse_known_args(argv)
     pipeline_args.extend(
         [
-            # CHANGE 2/6: (OPTIONAL) Change this to DataflowRunner to
+            # Change this to DataflowRunner to
             # run your pipeline on the Google Cloud Dataflow Service.
             "--runner=DirectRunner",
-            # CHANGE 3/6: (OPTIONAL) Your project ID is required in order to
+            # Project ID is required in order to
             # run your pipeline on the Google Cloud Dataflow Service.
             "--project=SET_YOUR_PROJECT_ID_HERE",
-            # CHANGE 4/6: (OPTIONAL) The Google Cloud region (e.g. us-central1)
+            # The Google Cloud region (e.g. us-central1)
             # is required in order to run your pipeline on the Google Cloud
             # Dataflow Service.
             "--region=SET_REGION_HERE",
-            # CHANGE 5/6: Your Google Cloud Storage path is required for staging local
+            # Google Cloud Storage path is required for staging local
             # files.
             "--staging_location=gs://YOUR_BUCKET_NAME/AND_STAGING_DIRECTORY",
-            # CHANGE 6/6: Your Google Cloud Storage path is required for temporary
+            # Google Cloud Storage path is required for temporary
             # files.
             "--temp_location=gs://YOUR_BUCKET_NAME/AND_TEMP_DIRECTORY",
             "--job_name=your-wordcount-job",
@@ -82,9 +80,7 @@ def main(argv=None):
     options = PipelineOptions(pipeline_args)  # pipeline_options(pipeline_args)
 
     input_file = known_args.input  # "gs://dataflow-samples/shakespeare/kinglear.txt"
-    output_file = (
-        known_args.output
-    )  # f"gs://kimmos-test-bucket-3/output/wordcount-minimal"
+    output_file = known_args.output
 
     with beam.Pipeline(options=options) as p:
 
