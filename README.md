@@ -28,19 +28,13 @@ Note: Running the pipeline will incur charges on your Google Cloud account. See 
 
 ## Local wordcount example with Google Cloud Dataflow
 
-First, fill in the values in `.env` file, following `.env.example`.
-
-Run the example:
-
-```bash
-$ python wordcount_minimal.py --requirements_file requirements-workers.txt
-```
-
-Specifying the `requirements-workers.txt` is required so that cloud workers know which packages are required.
-
-## Alternative run
-
 ```bash
 $ export GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json
-$ python main.py --runner DataflowRunner --project ${GCP_PROJECT} --region=europe-west1 --staging_location=gs://${GCP_BUCKET}/staging --temp_location gs://${GCP_BUCKET}/temp --job_name wordcount-job
+$ python main.py --runner DataflowRunner --project ${GCP_PROJECT} --region=europe-west1 --staging_location=gs://${GCP_BUCKET}/staging --temp_location gs://${GCP_BUCKET}/temp --job_name wordcount-job --output gs://${GCP_BUCKET}/output/counts
+```
+
+To run locally:
+
+```bash
+$ python main.py --runner DirectRunner --output output/counts
 ```
