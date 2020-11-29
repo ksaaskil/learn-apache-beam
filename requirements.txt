@@ -1,3 +1,2 @@
-apache-beam[aws,gcp]
-black
-python-dotenv
+-r requirements-workers.txt
+apache-beam[gcp]
