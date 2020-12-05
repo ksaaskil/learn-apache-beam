@@ -13,25 +13,6 @@ from apache_beam.options.pipeline_options import (
 from apache_beam.io import ReadFromText, WriteToText
 
 
-def pipeline_options() -> PipelineOptions:
-    # from dotenv import load_dotenv
-    # load_dotenv()
-
-    # GOOGLE_CLOUD_PROJECT = os.getenv("GCP_PROJECT", None)
-    # GCP_BUCKET = os.getenv("GCP_BUCKET", None)
-    # GCP_REGION = os.getenv("GCP_REGION", None)
-    options = PipelineOptions()
-    # gcp_options = options.view_as(GoogleCloudOptions)
-    # gcp_options.project = GOOGLE_CLOUD_PROJECT
-    # gcp_options.job_name = "wordcount-minimal"
-    # gcp_options.staging_location = f"gs://{GCP_BUCKET}/staging"
-    # gcp_options.temp_location = f"gs://{GCP_BUCKET}/temp"
-    # gcp_options.region = GCP_REGION
-    # options.view_as(StandardOptions).runner = "DataflowRunner"
-    # gcp_options.view_as(SetupOptions).save_main_session = True
-    return options
-
-
 def main(argv=None):
 
     parser = argparse.ArgumentParser()
