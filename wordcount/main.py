@@ -1,6 +1,5 @@
 import argparse
 import logging
-import os
 import re
 
 from past.builtins import unicode
@@ -9,9 +8,6 @@ import apache_beam as beam
 
 from apache_beam.options.pipeline_options import (
     PipelineOptions,
-    GoogleCloudOptions,
-    StandardOptions,
-    SetupOptions,
 )
 
 from apache_beam.io import ReadFromText, WriteToText
@@ -42,7 +38,7 @@ def main(argv=None):
     parser.add_argument(
         "--input",
         dest="input",
-        default="gs://dataflow-samples/shakespeare/kinglear.txt",
+        required=True,
         help="Input file to process.",
     )
     parser.add_argument(

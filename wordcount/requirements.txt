@@ -1,2 +1,1 @@
--r requirements-workers.txt
 apache-beam[gcp]

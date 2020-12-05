@@ -30,7 +30,7 @@ Note: Running the pipeline will incur charges on your Google Cloud account. See 
 
 ```bash
 $ export GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json
-$ python main.py --runner DataflowRunner --project ${GCP_PROJECT} --region=europe-west1 --staging_location=gs://${GCP_BUCKET}/staging --temp_location gs://${GCP_BUCKET}/temp --job_name wordcount-job --output gs://${GCP_BUCKET}/output/counts
+$ python main.py --runner DataflowRunner --project ${GCP_PROJECT} --region=europe-west1 --staging_location=gs://${GCP_BUCKET}/staging --temp_location gs://${GCP_BUCKET}/temp --job_name wordcount-job --input gs://dataflow-samples/shakespeare/kinglear.txt --output gs://${GCP_BUCKET}/output/counts
 ```
 
 To run locally:
