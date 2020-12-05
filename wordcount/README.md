@@ -36,5 +36,5 @@ $ python main.py --runner DataflowRunner --project ${GCP_PROJECT} --region=euro
 To run locally:
 
 ```bash
-$ python main.py --runner DirectRunner --output output/counts
+$ python main.py --runner DirectRunner --input gs://dataflow-samples/shakespeare/kinglear.txt --output output/counts
 ```

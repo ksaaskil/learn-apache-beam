@@ -44,38 +44,16 @@ def main(argv=None):
     parser.add_argument(
         "--output",
         dest="output",
-        # CHANGE 1/6: The Google Cloud Storage path is required
-        # for outputting the results.
-        # default='gs://YOUR_OUTPUT_BUCKET/AND_OUTPUT_PREFIX',
         required=True,
         help="Output location to write results to.",
     )
     known_args, pipeline_args = parser.parse_known_args(argv)
-    pipeline_args.extend(
-        [
-            # Change this to DataflowRunner to
-            # run your pipeline on the Google Cloud Dataflow Service.
-            "--runner=DirectRunner",
-            # Project ID is required in order to
-            # run your pipeline on the Google Cloud Dataflow Service.
-            "--project=SET_YOUR_PROJECT_ID_HERE",
-            # The Google Cloud region (e.g. us-central1)
-            # is required in order to run your pipeline on the Google Cloud
-            # Dataflow Service.
-            "--region=SET_REGION_HERE",
-            # Google Cloud Storage path is required for staging local
-            # files.
-            "--staging_location=gs://YOUR_BUCKET_NAME/AND_STAGING_DIRECTORY",
-            # Google Cloud Storage path is required for temporary
-            # files.
-            "--temp_location=gs://YOUR_BUCKET_NAME/AND_TEMP_DIRECTORY",
-            "--job_name=your-wordcount-job",
-        ]
-    )
 
     options = PipelineOptions(pipeline_args)  # pipeline_options(pipeline_args)
 
-    input_file = known_args.input  # "gs://dataflow-samples/shakespeare/kinglear.txt"
+    input_file = (
+        known_args.input
+    )  # For example: "gs://dataflow-samples/shakespeare/kinglear.txt"
     output_file = known_args.output
 
     with beam.Pipeline(options=options) as p:
